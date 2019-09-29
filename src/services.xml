@@ -11,6 +11,7 @@
 
         <service id="AmsterdamPHP\TrelloChecklister\Command\CreateBoards" public="true">
             <argument type="service" id="AmsterdamPHP\TrelloChecklister\Trello\BoardManager"/>
+            <argument type="service" id="Maknz\Slack\Client"/>
         </service>
 
     </services>
