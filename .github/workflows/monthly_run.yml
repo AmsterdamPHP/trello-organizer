@@ -1,0 +1,34 @@
+name: Create Monthly Checklist
+
+on:
+  schedule:
+    - cron: '* * 1 * *'
+
+jobs:
+  monthly-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Installing PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: 7.3
+      - name: Check PHP Version
+        run: php -v
+      - name: Check Composer Version
+        run: composer -V
+      - name: Check PHP Extensions
+        run: php -m
+      - name: Install Dependencies
+        run: composer install -o -n --no-progress
+      - name: Run command
+        run: ./bin/console trello:boards:create
+        env:
+          TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
+          TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
+          TRELLO_ORG_ID: ${{ secrets.TRELLO_ORG_ID }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: "#monthly-meetings"
+
