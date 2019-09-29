@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="trello.config" type="collection">
+            <parameter key="name">AmsterdamPHP Trello Checklister</parameter>
+            <parameter key="scope">read,write</parameter>
+            <parameter key="key">%env(string:TRELLO_KEY)%</parameter>
+            <parameter key="token">%env(string:TRELLO_TOKEN)%</parameter>
+        </parameter>
+        <parameter key="organizationId">%env(string:TRELLO_ORG_ID)%</parameter>
+    </parameters>
+
+    <services>
+        <service id="Stevenmaguire\Services\Trello\Client">
+            <argument>%trello.config%</argument>
+        </service>
+    </services>
+</container>
