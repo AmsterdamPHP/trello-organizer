@@ -26,7 +26,7 @@ jobs:
       - name: Check PHP Extensions
         run: php -m
       - name: Install Dependencies
-        run: composer install -o -n -no-progress --no-dev
+        run: composer install -o -n --no-progress
       - name: Run command
         run: ./bin/console trello:boards:create
         env:
