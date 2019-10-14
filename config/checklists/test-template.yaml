@@ -1,0 +1,14 @@
+name: "Monthly Meeting: %s"
+desc: Checklist for the execution of a Monthly Meeting
+lists: default
+cards:
+  - name: Update Meetup
+    desc: Adjust hoster and speaker information on meetup.com
+    due: -4 weeks
+  - name: Announce Meetup
+    desc: Click the announce button
+    due: -4 weeks
+  - name: Prepare Slides
+    desc: Click the announce button
+    due: -2 days
+
