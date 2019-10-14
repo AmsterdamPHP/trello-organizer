@@ -10,7 +10,8 @@
         "symfony/dependency-injection": "^4.3",
         "symfony/config": "^4.3",
         "symfony/expression-language": "^4.3",
-        "symfony/dotenv": "^4.3"
+        "symfony/dotenv": "^4.3",
+        "alek13/slack": "^1.10"
     }
     ,
     "require-dev": {

@@ -7,7 +7,6 @@ use AmsterdamPHP\TrelloChecklister\ExecutionResult;
 use DateTimeImmutable;
 use Stevenmaguire\Services\Trello\Client;
 use function array_filter;
-use const DATE_RFC3339;
 
 final class BoardManager
 {
@@ -20,7 +19,7 @@ final class BoardManager
 
     public function __construct(Client $trello, $organizationId)
     {
-        $this->trello = $trello;
+        $this->trello         = $trello;
         $this->organizationId = $organizationId;
     }
 
@@ -30,7 +29,11 @@ final class BoardManager
         $title      = $template->makeBoardName($nextMeetup);
 
         if ($this->boardExists($title)) {
-            return new ExecutionResult(false,'Skipped, board already exists for: ' . $nextMeetup->format('d/m/Y'));
+            return new ExecutionResult(
+                false,
+                'Skipped, board already exists.',
+                ['date' => $nextMeetup, 'template' => $template->getName()]
+            );
         }
 
         $board = $template->createBoardFromTemplate($this->organizationId, $nextMeetup, $this->trello);
@@ -38,13 +41,12 @@ final class BoardManager
         return new ExecutionResult(
             true,
             sprintf(
-                'Created Board for: %s',
-                $nextMeetup->format('d/m/Y'),
+                'Successfully created board.'
             ),
             [
                 'board_url' => $board->url,
-                'template' => $template->getName(),
-                'date' => $nextMeetup
+                'template'  => $template->getName(),
+                'date'      => $nextMeetup,
             ]
         );
     }

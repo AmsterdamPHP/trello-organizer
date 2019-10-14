@@ -5,6 +5,7 @@
         http://symfony.com/schema/dic/services/services-1.0.xsd">
     <imports>
         <import resource="services/trello.xml"/>
+        <import resource="services/slack.xml"/>
         <import resource="../src/services.xml"/>
     </imports>
 </container>

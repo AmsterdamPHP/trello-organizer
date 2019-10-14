@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="slack.webhook">%env(string:SLACK_WEBHOOK)%</parameter>
+        <parameter key="slack.config" type="collection">
+            <parameter key="username">monthly-organizer</parameter>
+            <parameter key="channel">%env(string:SLACK_CHANNEL)%</parameter>
+            <parameter key="link_names">true</parameter>
+            <parameter key="icon">:clipboard:</parameter>
+            <parameter key="unfurl_links">true</parameter>
+        </parameter>
+    </parameters>
+
+    <services>
+        <service id="Maknz\Slack\Client">
+            <argument>%slack.webhook%</argument>
+            <argument>%slack.config%</argument>
+        </service>
+    </services>
+</container>
