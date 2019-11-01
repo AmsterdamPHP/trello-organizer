@@ -2,13 +2,27 @@ name: "Monthly Meeting: %s"
 desc: Checklist for the execution of a Monthly Meeting
 lists: default
 cards:
+  - name: Send Hoster Checklist
+    desc: Ensure the host has received the checklist with all details on what they need to do.
+    due: -6 weeks
+  - name: Confirm Host
+    desc: Ensure spreadsheet has correct host data, and the host is aware of any details
+    due: -4 weeks
+  - name: Confirm Speaker/Talk
+    desc: Information about speaker and talk details should be in the spreadsheet and confirmed with the speaker
+    due: -4 weeks
   - name: Update Meetup
     desc: Adjust hoster and speaker information on meetup.com
-    due: -4 weeks
+    due: -3 weeks 5 days
   - name: Announce Meetup
-    desc: Click the announce button
-    due: -4 weeks
+    desc: Click the announce button, after all the data has been confirmed
+    due: -3 weeks 5 days
+  - name: Gather data needed for slides
+    desc: Compile a list of conferences, extra slides needed for the slides this month
+    due: -3 days
   - name: Prepare Slides
-    desc: Click the announce button
-    due: -2 days
-
+    desc: Open a PR with this month's slides on https://github.com/AmsterdamPHP/monthly-slidedeck
+    due: -2 hours
+  - name: Host the meetup
+    desc: Moment of glory, stand up there and welcome the crowd.
+    due: -0 hours

@@ -1,5 +1,5 @@
 name: "Monthly Meeting: %s"
-desc: Checklist for the execution of a Monthly Meeting
+desc: Test template for testing tests
 lists: default
 cards:
   - name: Update Meetup
